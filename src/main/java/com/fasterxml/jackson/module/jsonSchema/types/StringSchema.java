@@ -27,10 +27,16 @@ public class StringSchema extends ValueTypeSchema
     @JsonProperty
     private String pattern;
 
-    @Override
-    public StringSchema asStringSchema() {
-        return this;
-    }
+        /**
+         * The will be the media type
+         */
+        @JsonProperty
+        private String mediaType;
+
+	@Override
+	public StringSchema asStringSchema() {
+		return this;
+	}
 
     public Integer getMaxLength() {
         return maxLength;
@@ -44,10 +50,14 @@ public class StringSchema extends ValueTypeSchema
         return pattern;
     }
 
-    @Override
-    public JsonFormatTypes getType() {
-        return JsonFormatTypes.STRING;
-    }
+        public String getMediaType() {
+            return mediaType;
+        }
+
+	@Override
+	public JsonFormatTypes getType() {
+	    return JsonFormatTypes.STRING;
+	}
 
     @Override
     public boolean isStringSchema() {
@@ -66,14 +76,18 @@ public class StringSchema extends ValueTypeSchema
         this.pattern = pattern;
     }
 
-    @Override
-    public boolean equals(Object obj)
-    {
-        if (obj == this) return true;
-        if (obj == null) return false;
-        if (!(obj instanceof StringSchema)) return false;
-        return _equals((StringSchema) obj);
-    }
+        public void setMediaType(String mediaType) {
+            this.mediaType = mediaType;
+        }
+
+     @Override
+     public boolean equals(Object obj)
+     {
+         if (obj == this) return true;
+         if (obj == null) return false;
+         if (!(obj instanceof StringSchema)) return false;
+         return _equals((StringSchema) obj);
+     }
 
     protected boolean _equals(StringSchema that)
     {
