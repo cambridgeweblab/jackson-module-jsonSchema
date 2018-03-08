@@ -1,5 +1,5 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion> 
+  <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>com.fasterxml.jackson</groupId>
     <artifactId>jackson-base</artifactId>
@@ -8,7 +8,7 @@
   <groupId>com.fasterxml.jackson.module</groupId>
   <artifactId>jackson-module-jsonSchema</artifactId>
   <name>jackson-module-jsonSchema</name>
-  <version>2.9.5-SNAPSHOT</version>
+  <version>2.9.4-CA-SNAPSHOT</version>
   <packaging>bundle</packaging>
   <description>Add-on module for Jackson (http://jackson.codehaus.org) to support
 JSON Schema (http://tools.ietf.org/html/draft-zyp-json-schema-03) version 3 generation.
@@ -17,7 +17,7 @@ JSON Schema (http://tools.ietf.org/html/draft-zyp-json-schema-03) version 3 gene
   <scm>
     <connection>scm:git:git@github.com:FasterXML/jackson-module-jsonSchema.git</connection>
     <developerConnection>scm:git:git@github.com:FasterXML/jackson-module-jsonSchema.git</developerConnection>
-    <url>http://github.com/FasterXML/jackson-module-jsonSchema</url>    
+    <url>http://github.com/FasterXML/jackson-module-jsonSchema</url>
     <tag>HEAD</tag>
   </scm>
   <developers>
@@ -73,4 +73,22 @@ JSON Schema (http://tools.ietf.org/html/draft-zyp-json-schema-03) version 3 gene
       </plugin>
     </plugins>
   </build>
+
+  <profiles>
+    <profile>
+      <id>shippable</id>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-surefire-plugin</artifactId>
+            <configuration>
+              <redirectTestOutputToFile>true</redirectTestOutputToFile>
+              <reportsDirectory>shippable/testresults</reportsDirectory>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
 </project>
